@@ -6,16 +6,16 @@ now returns Json historical weather for Washington by hours, from 2019-01-01 til
 * aggrigate data and return needed only
 #List of needed data
 * Temperature
- * minimum temperature
- * maximum temperature
- * middle temperature
- * median temperature
+  -   minimum temperature
+  -   maximum temperature
+  -   middle temperature
+  -   median temperature
 * Preccure
-** maximum preccure
-** minimum preccure
+  -   maximum preccure
+  -   minimum preccure
 * Humidity
-** maximum humidity
-** minimum humidity
+  -   maximum humidity
+  -   minimum humidity
 ---
 #Params of request
 * City
