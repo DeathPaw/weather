@@ -1,10 +1,10 @@
 # Dell weather service
 now returns Json historical weather for Washington by hours, from 2019-01-01 till 2019-01-03.
-#TODO
-* selecter to choose city
-* parse Json, need to create the HTML index.html to use variables from the context dictionary.
-* aggrigate data and return needed only
-#List of needed data
+# TODO
+* Selecter to choose city
+* Parse Json, need to create the HTML index.html to use variables from the context dictionary.
+* Aggrigate data and return needed only
+# List of needed data
 * Temperature
   -   minimum temperature
   -   maximum temperature
