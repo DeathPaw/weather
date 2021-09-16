@@ -41,7 +41,7 @@
          "median": 1016.5, 
          "min": 1015.1, 
          "max": 1017.3 
-       }  
+       } 
       } 
 # Params of request
 * City
