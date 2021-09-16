@@ -1,9 +1,7 @@
 # Dell weather service
-now returns Json historical weather for Washington by hours, from 2019-01-01 till 2019-01-03.
-# TODO
-* Selecter to choose city(after user choose needed one we should define latitude and longitude, so call GET request with that)
-* Parse Json(now it just print, looks really bad), need to create the HTML index.html to use variables from the context dictionary.
-* Aggrigate data and return needed only (calculate median/middle, search for maximum/minimum)
+* Selecter to choose city
+* Enter number of days
+* Get your Json file with data
 # List of needed data
 * Temperature
   -   minimum temperature
@@ -13,10 +11,38 @@ now returns Json historical weather for Washington by hours, from 2019-01-01 til
 * Preccure
   -   maximum preccure
   -   minimum preccure
+  -   middle preccure
+  -   median preccure
 * Humidity
   -   maximum humidity
   -   minimum humidity
+  -   middle humidity
+  -   median humidity
 ---
+#Example of Json
+{
+       "city": "Saint-Petersburg",
+       "from": "2021-09-10",
+       "to": "2021-09-15",
+       "temperature_c": {
+         "average": 25.0,
+         "median": 24.5,
+         "min": 20.1,
+         "max": 29.3
+       },
+       "humidity": {
+         "average": 55.4,
+         "median": 58.1,
+         "min": 43.1,
+         "max": 82.4
+       },
+       "pressure_mb": {
+         "average": 1016.0,
+         "median": 1016.5,
+         "min": 1015.1,
+         "max": 1017.3
+       }
+      }
 # Params of request
 * City
 * Number of days to analyze
