@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/results.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="weatherResults">
+    <h3>Weather in {{ location }}</h3>
+    <h2>Temperature: {{ temp }}° F</h2>
+    <h3>Sea level pressure: {{ sealevelpressure }}</h3>
+    <h4>Humidity: {{ humidity }}</h4>
+    <h5>Start date: {{ start_date }}</h5>
+    <h6>End date: {{ end_date }}</h6>
+</div>
+</body>
+</html>
