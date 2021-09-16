@@ -20,7 +20,7 @@
   -   median humidity
 ---
 # Example of Json
-{  
+    {  
   "city": "Saint-Petersburg",  
   "from": "2021-09-10",  
   "to": "2021-09-15",  
