@@ -46,3 +46,6 @@
 # Params of request
 * City
 * Number of days to analyze
+# Request
+Service receives GET requests
+    /weather?city=<city>&days=<n>
