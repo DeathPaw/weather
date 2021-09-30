@@ -1,7 +1,3 @@
-# Dell weather service
-* Selecter to choose city
-* Enter number of days
-* Get your Json file with data
 # List of needed data
 * Temperature
   -   minimum temperature
@@ -49,3 +45,14 @@
 # Request
 Service receives GET requests
     /weather?city=<city>&days=<n>
+  ---
+# Docker
+  * Start on local Linux machine
+      docker build [PATH_TO_DOCKERFILE] -t weather  
+      docker run -p 8080:8080 -e API_KEY=[YOUR_API_KEY] weather  
+  
+  * Or you can pull image from Dockeer Hub
+      docker pull tenaciousfoxy/weather  
+      docker run -p 8080:8080 -e API_KEY=[YOUR_API_KEY] weather  
+ 
+
