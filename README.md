@@ -54,5 +54,3 @@ Service receives GET requests
 * Or you can pull image from Dockeer Hub  
        docker pull tenaciousfoxy/weather        
            docker run -p 8080:8080 -e API_KEY=[YOUR_API_KEY] weather             
-     
-Format of get request: GET /weather?city=<city>&days=<n>
