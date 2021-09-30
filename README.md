@@ -44,7 +44,7 @@
 * Number of days to analyze
 # Request
 Service receives GET requests
-    /weather?city=<city>&days=<n>
+    /weather?city="city"&days="n"
   ---
 # Docker
 * Start on local Linux machine 
