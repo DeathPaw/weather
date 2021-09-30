@@ -1,3 +1,0 @@
-[openweathermap]
-x-rapidapi-host=visual-crossing-weather.p.rapidapi.com
-x-rapidapi-key=d3ef335d75mshbe199c803c0737bp1762b0jsn8bad9be113ee
