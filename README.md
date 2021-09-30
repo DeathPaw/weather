@@ -47,7 +47,8 @@ Service receives GET requests
     /weather?city=<city>&days=<n>
   ---
 # Docker
-  * Start on local Linux machine  
+  * Start on local Linux machine 
+      {  
           docker build [PATH_TO_DOCKERFILE] -t weather       
           docker run -p 8080:8080 -e API_KEY=[YOUR_API_KEY] weather        
   
