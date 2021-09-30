@@ -1,12 +1,12 @@
 import requests
-import configparser
 import time
 import json
+import os
 import numpy as np
 from datetime import date, timedelta
 from flask import Flask, render_template, request
 
-
+api_key = os.environ['API_KEY']
 app = Flask(__name__)
 
 
@@ -16,6 +16,7 @@ def weather_dashboard():
 
 @app.route("/weather")
 def weather():
+    print("hi")
     city = request.args.get('city')
     days_number = int(request.args.get('days'))  
     response = calculate_result(city, days_number)
@@ -34,7 +35,15 @@ def get_weather(today, end_date, api_key, city):
     url = "https://visual-crossing-weather.p.rapidapi.com/history"
     request_start_date = str(today)+"T00:00:00"
     request_end_date = str(end_date)+"T00:00:00"
-    querystring = {"startDateTime":request_end_date,"aggregateHours":"24","location":city,"endDateTime":request_start_date,"unitGroup":"us","dayStartTime":"8:00:00","contentType":"json","dayEndTime":"17:00:00","shortColumnNames":"0"}
+    querystring = {"startDateTime":request_end_date,
+                   "aggregateHours":"24",
+                   "location":city,
+                   "endDateTime":request_start_date,
+                   "unitGroup":"us",
+                   "dayStartTime":"8:00:00",
+                   "contentType":"json",
+                   "dayEndTime":"17:00:00",
+                   "shortColumnNames":"0"}
 
     headers = {
         'x-rapidapi-host': "visual-crossing-weather.p.rapidapi.com",
@@ -44,21 +53,14 @@ def get_weather(today, end_date, api_key, city):
     response = requests.request("GET", url, headers=headers, params=querystring)
     return response.json()
 
-def get_api_key():
-    config = configparser.ConfigParser()
-    config.read('config.ini')
-    return config['openweathermap']['x-rapidapi-key']
-
 def calculate_result(city, days_number):
     today = date.today()
     end_date = today - timedelta(days=int(days_number))
-    api_key = get_api_key()
     data = get_weather(today, end_date, api_key, city)
     day=0
     humidity=[day]*int(days_number)
     temp=[day]*int(days_number)
     sealevelpressure=[day]*int(days_number)
-    #return data
     for day in range(int(days_number)):
         humidity[day] = float("{0:.2f}".format(data["locations"][city]["values"][day]["humidity"]))
         temp[day] = float("{0:.2f}".format(data["locations"][city]["values"][day]["temp"]))
@@ -80,9 +82,26 @@ def calculate_result(city, days_number):
     min_pressure=np.min(sealevelpressure)
     max_pressure=np.max(sealevelpressure)
     ###JSON ENDPOINT
-    res={"city": location, "from": str(end_date), "to": str(today), "temperature_F": { "average": avg_temp, "median": med_temp, "min": min_temp, "max": max_temp },
-         "humidity": { "average": avg_humidity, "median": med_humidity, "min": min_humidity, "max": max_humidity },
-         "pressure_mb": {"average": avg_pressure, "median": med_pressure, "min": min_pressure, "max": max_pressure } }
+    res={
+        "city": location,
+         "from": str(end_date),
+         "to": str(today),
+         "temperature_F": {
+             "average": avg_temp,
+             "median": med_temp,
+             "min": min_temp,
+             "max": max_temp },
+         "humidity": {
+             "average": avg_humidity,
+             "median": med_humidity,
+             "min": min_humidity,
+             "max": max_humidity },
+         "pressure_mb": {
+             "average": avg_pressure,
+             "median": med_pressure,
+             "min": min_pressure,
+             "max": max_pressure }
+         }
     my_json=json.dumps(res)
     return my_json
 
