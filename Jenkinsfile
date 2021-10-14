@@ -1,28 +1,23 @@
 pipeline {
-  agent any
-  environment{
-    DOCKERHUB_CREDENTIALS = credentials('DockerHub')
-  }
-  stages {
-    stage('Build') {
-      steps{
-        sh 'docker build -t tenaciousfoxy/weather:latest .'
-      }
+
+    agent any
+
+    stages {
+        stage ('Checkout'){
+            steps {
+                checkout scm
+            }
+        }
+        stage ('Push'){
+            steps {
+                script {
+                    docker.withRegistry('', 'my_docker') {
+
+                        def customImage = docker.build("tenaciousfoxy/weather")
+                        customImage.push()
+                    }
+                }
+            }
+        }
     }
-    stage('Login') {
-      steps {
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-      }
-    }
-    stage('Push') {
-      steps {
-        sh 'docker push tenaciousfoxy/weather:latest'
-      }
-    }
-  }
-  post {
-    always {
-      sh 'docker logout'
-    }
-  }
 }
