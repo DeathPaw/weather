@@ -8,12 +8,12 @@
 </head>
 <body>
 <div id="weatherResults">
-    <h3>Weather in {{ location }}</h3>
+    <h2>Weather in {{ location }}</h2>
     <h2>Temperature: {{ temp }}° F</h2>
-    <h3>Sea level pressure: {{ sealevelpressure }}</h3>
-    <h4>Humidity: {{ humidity }}</h4>
-    <h5>Start date: {{ start_date }}</h5>
-    <h6>End date: {{ end_date }}</h6>
+    <h2>Sea level pressure: {{ sealevelpressure }}</h2>
+    <h2>Humidity: {{ humidity }}</h2>
+    <h2>Start date: {{ start_date }}</h2>
+    <h2>End date: {{ end_date }}</h2>
 </div>
 </body>
 </html>

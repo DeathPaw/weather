@@ -67,43 +67,29 @@ def calculate_result(city, days_number):
         sealevelpressure[day] = float("{0:.2f}".format(data["locations"][city]["values"][day]["sealevelpressure"]))
     location = data["locations"][city]["tz"]
         
-    med_temp=np.median(temp)
-    avg_temp=np.average(temp)
-    min_temp=np.min(temp)
-    max_temp=np.max(temp)
-
-    med_humidity=np.median(humidity)
-    avg_humidity=np.average(humidity)
-    min_humidity=np.min(humidity)
-    max_humidity=np.max(humidity)
-
-    med_pressure=np.median(sealevelpressure)
-    avg_pressure=np.average(sealevelpressure)
-    min_pressure=np.min(sealevelpressure)
-    max_pressure=np.max(sealevelpressure)
+    #РЕКВЕСТ СЕМАНТИЧЕСКИ
     ###JSON ENDPOINT
     res={
         "city": location,
          "from": str(end_date),
          "to": str(today),
          "temperature_F": {
-             "average": avg_temp,
-             "median": med_temp,
-             "min": min_temp,
-             "max": max_temp },
+             "average": np.average(temp),
+             "median": np.median(temp),
+             "min": np.min(temp),
+             "max": np.max(temp) },
          "humidity": {
-             "average": avg_humidity,
-             "median": med_humidity,
-             "min": min_humidity,
-             "max": max_humidity },
+             "average": np.average(humidity),
+             "median": np.median(humidity),
+             "min": np.min(humidity),
+             "max": np.max(humidity) },
          "pressure_mb": {
-             "average": avg_pressure,
-             "median": med_pressure,
-             "min": min_pressure,
-             "max": max_pressure }
+             "average": np.average(sealevelpressure),
+             "median": np.median(sealevelpressure),
+             "min": np.min(sealevelpressure),
+             "max": np.max(sealevelpressure) }
          }
-    my_json=json.dumps(res)
-    return my_json
+    return res
 
 
 if __name__ == '__main__':
